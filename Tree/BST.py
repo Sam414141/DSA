@@ -80,7 +80,13 @@ class BST():
 
         if node.left:
             self.print_tree(node.left, level + 1, "L--- ")
-
+            
+    # def del_node(self,)
+    def get_successor(self,temp):
+        temp = temp.right
+        while temp is not None and temp.left is not None:
+            temp = temp.left
+        return temp
 
 
 

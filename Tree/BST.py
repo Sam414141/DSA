@@ -55,7 +55,7 @@ class BST():
             tmp = self.root
             while tmp.left:
                 tmp = tmp.left
-            print(f"Max Value in a tree : {tmp.data}")
+            print(f"Min Value in a tree : {tmp.data}")
     def findmin(self):
             if self.root == None:
                 print("Tree is Empty")
@@ -81,15 +81,38 @@ class BST():
         if node.left:
             self.print_tree(node.left, level + 1, "L--- ")
             
-    # def del_node(self,)
+    def del_node(self,rt,val):
+        if rt is Node:
+            return rt
+        if val<rt.data:
+            rt.left= self.del_node(rt.left,val)
+        elif True:
+            pass
     def get_successor(self,temp):
         temp = temp.right
         while temp is not None and temp.left is not None:
             temp = temp.left
         return temp
 
-
-
+    def search(self,key):
+        tmp = self.root
+        while tmp:
+            if tmp.data == key:
+                return True
+            elif key<tmp.data:
+                tmp = tmp.left
+            else:
+                tmp = tmp.right
+            return False
+    def count_nleaf(self, rt):
+        if rt is None:
+            return
+        else:
+            self.count_nleaf(rt.leaf)
+            if rt.leaf is not None or rt.right is not None:
+                self.cnt += 1
+            self.count_nleaf(rt.right)
+            
 
 
 tree = BST()
@@ -99,17 +122,18 @@ for value in values:
     tree.insert(Node(value))
 
 # tree.print_tree()
-print("Inorder")
-tree.inorder(tree.root)
-print()
-print("Preorder")
-tree.preorder(tree.root)
-print()
-print("Postorder")
-tree.postorder(tree.root)            
-print()
+# print("Inorder")
+# tree.inorder(tree.root)
+# print()
+# print("Preorder")
+# tree.preorder(tree.root)
+# print()
+# print("Postorder")
+# tree.postorder(tree.root)            
+# print()
 
-tree.findmax()  
-tree.findmin()
+# tree.findmax()  
+# tree.findmin()
         
 tree.print_tree()
+print(tree.search(5))
